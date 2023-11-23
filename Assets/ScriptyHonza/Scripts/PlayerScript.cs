@@ -42,6 +42,22 @@ public class PlayerScript : MonoBehaviour
             Debug.Log("There's second plane incoming");
 
         }
+        else if(collision.gameObject.tag == "TurnLeftWall"){
+
+            if(direction == transform.right){
+                direction = transform.forward;
+            }else if(direction == transform.forward){
+                direction = -transform.right;
+            }else if(direction == -transform.right){
+                direction = -transform.forward;
+            }else if(direction == -transform.forward){
+                direction = transform.right;
+            }
+
+
+            Debug.Log("There's second plane incoming");
+
+        }
 
 
     }
