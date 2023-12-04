@@ -13,16 +13,28 @@ public class SpawnWall : MonoBehaviour
     List<GameObject> Items;
 
     [SerializeField]
-    TextMeshProUGUI text;
+    TextMeshProUGUI text, WallNum;
+
+    [SerializeField]
+    int WallCount;
 
     [SerializeField]
     Transform GhostBlock;
     Vector3 spawn_pos;
 
+    Transform player_s;
+    [SerializeField]
+    GameObject player;
+
     private int wall;
     private bool Pause = true;
 
     // Update is called once per frame
+    void Start(){
+        WallNum.text = "Walls left: " + WallCount;
+        player_s = player.transform;
+    }
+
     void Update()
     {
         if (Input.GetKey(KeyCode.D))
@@ -37,6 +49,10 @@ public class SpawnWall : MonoBehaviour
             text.text = "<-";
         }
 
+        if(Input.GetKey(KeyCode.R)){
+                player.transform.position = player_s.position;
+        }
+
         if (Input.GetMouseButtonDown(0))
         {
             RaycastHit hit;
@@ -44,8 +60,13 @@ public class SpawnWall : MonoBehaviour
             if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100))
             {
                 spawn_pos = hit.point;
+                
+                if(WallCount >= 0){
+                    Instantiate(Items[wall], spawn_pos, Quaternion.identity);
+                    WallCount--;
+                    WallNum.text = "Walls left: " + WallCount;
+                }
 
-                Instantiate(Items[wall], spawn_pos, Quaternion.identity);
             }
         }
 
@@ -75,7 +96,7 @@ public class SpawnWall : MonoBehaviour
 
     void HandleRightClick()
     {
-        Debug.Log("DebugDebug");
+       
         RaycastHit hit;
 
         if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100))
@@ -86,6 +107,8 @@ public class SpawnWall : MonoBehaviour
 
             if(WallTags.Contains(clickedObject.tag)){
                 Destroy(clickedObject);
+                WallCount++;
+                WallNum.text = "Walls left: " + WallCount;
             }
         }
     }

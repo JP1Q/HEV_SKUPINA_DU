@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEditor.SearchService;
+using UnityEditor.ShaderKeywordFilter;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,7 +11,9 @@ public class PlayerScript : MonoBehaviour
     [SerializeField]
     Rigidbody Playerrb;
 
-    
+    [SerializeField]
+    int CurrentLevel;
+
 
     [SerializeField]
     float PlayerSpeed;
@@ -60,11 +63,16 @@ public class PlayerScript : MonoBehaviour
 
         }
         else if(collision.gameObject.tag == "Wall"){
-            Debug.Log("You have died");
+            SceneManager.LoadScene(CurrentLevel+1);
 
         }
         else if(collision.gameObject.tag == "Door"){
-            Debug.Log("druwer");
+            SceneManager.LoadScene(CurrentLevel+2);
+            Score.currentScore += 1;
+        }
+        else if(collision.gameObject.tag == "Coin"){
+            Score.currentScore += 1;
+            Destroy(collision.gameObject);
         }
 
 
