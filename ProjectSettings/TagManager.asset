@@ -6,6 +6,7 @@ TagManager:
   tags:
   - TurnRightWall
   - TurnLeftWall
+  - Wall
   layers:
   - Default
   - TransparentFX

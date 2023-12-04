@@ -1,15 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerScript : MonoBehaviour
 {
     [SerializeField]
     Rigidbody Playerrb;
 
+    
+
     [SerializeField]
     float PlayerSpeed;
+    float oldPS;
 
 
     private Vector3 direction;
@@ -17,12 +22,14 @@ public class PlayerScript : MonoBehaviour
     void Start()
     {
         direction = transform.forward;   // Inicializace smeru chuze <3
+        oldPS = PlayerSpeed;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Playerrb.AddForce(direction * PlayerSpeed * Time.deltaTime); // delani chuze
+        //Playerrb.AddForce(direction * PlayerSpeed * Time.deltaTime); // delani chuze rigidbody
+        transform.position += direction * PlayerSpeed * Time.deltaTime;
     }
 
     void OnCollisionEnter(Collision collision){
@@ -38,9 +45,6 @@ public class PlayerScript : MonoBehaviour
                 direction = transform.right;
             }
 
-
-            Debug.Log("There's second plane incoming");
-
         }
         else if(collision.gameObject.tag == "TurnLeftWall"){
 
@@ -54,10 +58,15 @@ public class PlayerScript : MonoBehaviour
                 direction = transform.right;
             }
 
-
-            Debug.Log("There's second plane incoming");
+        }
+        else if(collision.gameObject.tag == "Wall"){
+            Debug.Log("You have died");
 
         }
+        else if(collision.gameObject.tag == "Door"){
+            Debug.Log("druwer");
+        }
+
 
 
     }
