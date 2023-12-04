@@ -754,7 +754,7 @@ GameObject:
   - component: {fileID: 767773107}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1107,7 +1107,7 @@ GameObject:
   - component: {fileID: 897161657}
   m_Layer: 0
   m_Name: Cube (1)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1715,6 +1715,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 512b24691a9fc654d971ca321141ad05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  WallTags:
+  - TurnRightWall
+  - TurnLeftWall
   Items:
   - {fileID: 5650207661159703223, guid: 558c150367e5efc479c66bcf3c743157, type: 3}
   - {fileID: 6411004987472970987, guid: 745dd625252bd8745bf81644b53d4f55, type: 3}
@@ -2287,7 +2290,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 804440066401767314, guid: 29a2acc62595af54a857874d486d13cc, type: 3}
       propertyPath: m_Constraints
-      value: 116
+      value: 126
       objectReference: {fileID: 0}
     - target: {fileID: 1385032819981844123, guid: 29a2acc62595af54a857874d486d13cc, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2331,7 +2334,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2602403195895635770, guid: 29a2acc62595af54a857874d486d13cc, type: 3}
       propertyPath: PlayerSpeed
-      value: 400
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6996138203402438270, guid: 29a2acc62595af54a857874d486d13cc, type: 3}
       propertyPath: m_Name
