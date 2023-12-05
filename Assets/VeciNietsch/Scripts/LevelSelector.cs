@@ -26,6 +26,7 @@ public class LevelSelector : MonoBehaviour
         else
         {
             Debug.Log("Level 3");
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 3);
         }
     }
 }
