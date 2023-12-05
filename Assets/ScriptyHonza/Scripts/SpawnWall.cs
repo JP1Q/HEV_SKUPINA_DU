@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class SpawnWall : MonoBehaviour
 {
+    // Bordel ktery oficialne neexistuje >¬<
+
     [SerializeField]
     List<String> WallTags;
 
@@ -29,7 +31,6 @@ public class SpawnWall : MonoBehaviour
     private int wall;
     private bool Pause = true;
 
-    // Update is called once per frame
     void Start(){
         WallNum.text = "Walls left: " + WallCount;
         player_s = player.transform;
@@ -49,9 +50,7 @@ public class SpawnWall : MonoBehaviour
             text.text = "<-";
         }
 
-        if(Input.GetKey(KeyCode.R)){
-                player.transform.position = player_s.position;
-        }
+
 
         if (Input.GetMouseButtonDown(0))
         {
@@ -61,7 +60,7 @@ public class SpawnWall : MonoBehaviour
             {
                 spawn_pos = hit.point;
                 
-                if(WallCount >= 0){
+                if(WallCount > 0){
                     Instantiate(Items[wall], spawn_pos, Quaternion.identity);
                     WallCount--;
                     WallNum.text = "Walls left: " + WallCount;
@@ -107,8 +106,6 @@ public class SpawnWall : MonoBehaviour
 
             if(WallTags.Contains(clickedObject.tag)){
                 Destroy(clickedObject);
-                WallCount++;
-                WallNum.text = "Walls left: " + WallCount;
             }
         }
     }
