@@ -14,6 +14,18 @@ public class LevelSelector : MonoBehaviour
 
     public void SelectedScene(int Level)
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        if (Level == 1)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
+        else if (Level == 2)
+        {
+            Debug.Log("Level 2");
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
+        }
+        else
+        {
+            Debug.Log("Level 3");
+        }
     }
 }
