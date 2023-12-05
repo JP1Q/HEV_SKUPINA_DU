@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/VeciNietsch/TestNietsch.unity
+    path: Assets/MainMenu.unity
     guid: 29a1db7eb2233184fb67fe3ee1c57a32
   - enabled: 1
     path: Assets/Levels/Level1.unity

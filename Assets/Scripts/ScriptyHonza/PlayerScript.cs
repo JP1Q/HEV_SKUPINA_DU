@@ -13,9 +13,6 @@ public class PlayerScript : MonoBehaviour
     Rigidbody Playerrb;
 
     [SerializeField]
-    Boolean lastLevel = false;
-
-    [SerializeField]
     int CurrentLevel;
 
 
@@ -26,12 +23,14 @@ public class PlayerScript : MonoBehaviour
     Transform player_s;
 
     private Vector3 direction;
+    private int thisLvlScore;
     // Start is called before the first frame update
     void Start()
     {
         player_s = transform;
         direction = transform.forward;   // Inicializace smeru chuze <3
         oldPS = PlayerSpeed;
+        thisLvlScore=0;
     }
 
     // Update is called once per frame
@@ -92,10 +91,13 @@ public class PlayerScript : MonoBehaviour
 
         }
         else if(collision.gameObject.tag == "Wall"){
+            Score.currentScore -= thisLvlScore;
+            thisLvlScore = 0;
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
         }
         else if(collision.gameObject.tag == "Door"){
+            thisLvlScore = 0;
             int currentSceneIndex = SceneManager.GetActiveScene().buildIndex; // Ano pomalej kod je ale taky kod <3
             Score.currentScore += 1;
             if(currentSceneIndex < SceneManager.sceneCountInBuildSettings - 1){ // Tady to dela to ehmm dalsi level Ano :D
@@ -108,6 +110,7 @@ public class PlayerScript : MonoBehaviour
             
         }
         else if(collision.gameObject.tag == "Coin"){
+            thisLvlScore++;
             Destroy(collision.gameObject);
             Score.currentScore += 1; // Jeste musim udelat visualizaci dokeluuu
             
