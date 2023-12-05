@@ -63,11 +63,11 @@ public class PlayerScript : MonoBehaviour
 
         }
         else if(collision.gameObject.tag == "Wall"){
-            SceneManager.LoadScene(CurrentLevel+1);
+            SceneManager.LoadScene(CurrentLevel);
 
         }
         else if(collision.gameObject.tag == "Door"){
-            SceneManager.LoadScene(CurrentLevel+2);
+            SceneManager.LoadScene(CurrentLevel+1);
             Score.currentScore += 1;
         }
         else if(collision.gameObject.tag == "Coin"){
